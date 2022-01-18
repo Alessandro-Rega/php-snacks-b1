@@ -34,6 +34,17 @@
 
     // echo var_dump($partite[1]["casa"]);
     // echo sizeof($partite);
+
+    //---------------------------------------------------//
+
+    $granted = false;
+    $nome = $_GET['name'];
+    $email = $_GET['mail'];
+    $eta = $_GET['age'];
+
+    if(strlen($nome)>3 && is_numeric($eta) && (strpos($email, '@') && strpos($email, '.')))$granted = true;
+    else $granted = false;
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -44,11 +55,20 @@
     <title>PHP - Snacks</title>
 </head>
 <body>
+    <h1>Snack 1</h1>
     <ul>
         <?php
             for($i = 0; $i < sizeof($partite); $i++)
                 echo "<li>{$partite[$i]["casa"]} - {$partite[$i]["ospite"]} | {$partite[$i]["punti_c"]}-{$partite[$i]["punti_o"]}</li>"; 
         ?>
     </ul>
+    <hr>
+    <h1>Snack 2</h1>
+    <h3>
+        <?php 
+            if($granted == true) echo "Accesso riuscito";
+            else echo "Accesso negato"
+        ?>
+    </h3>
 </body>
 </html>
